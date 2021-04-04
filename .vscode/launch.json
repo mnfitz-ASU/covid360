@@ -1,0 +1,36 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
+	// JSON Formatted File, for more info on syntax, see link
+	// https://en.wikipedia.org/wiki/JSON
+
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "Debug (Launch)",
+			"request": "launch",
+			"osx": {
+				// MAC Specific Section
+				"classPaths": [".", "build/classes"],
+				"vmArgs": "--module-path ???? --add-modules javafx.controls,javafx.fxml"
+			},
+			"windows": {
+				// WIN10 Specific Section
+				"classPaths": ["bin", "%JAVAFX_HOME%\\lib", "%JAVA_HOME\\lib"],
+				"vmArgs": "--module-path %JAVAFX_HOME%\\lib --add-modules javafx.controls,javafx.fxml"
+			},
+			"mainClass": "edu.asu.cse360.covid360.Main"
+			//"mainClass": "covid360.Main"
+		},
+		
+		{
+			"type": "java",
+			"name": "Debug (Launch) - Current File",
+			"request": "launch",
+			"mainClass": "${file}"
+		}
+	]
+}
