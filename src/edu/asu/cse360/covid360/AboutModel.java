@@ -1,14 +1,15 @@
 package edu.asu.cse360.covid360;
 import java.util.ArrayList;
 
+// 
 // This class is responsible for the About page
-public class About 
+public class AboutModel
 {
 	// List of teammates
 	private ArrayList<String> mGroupList = new ArrayList<String>();
 
 	// Constructor to add all group members
-	public About() 
+	public AboutModel() 
 	{
 		mGroupList.add("Matthew Fitzgerald");
 		mGroupList.add("Ian Bellerose");
