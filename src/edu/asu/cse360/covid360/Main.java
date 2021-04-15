@@ -22,7 +22,7 @@ public class Main extends Application {
 	// an object of AboutPane.
 	private AboutView mAboutView; // Child of tabPane
 
-	private EmptyView mEmptyView1; // Skeleton example pane
+	private PatientListView mPatientListView; // Skeleton example pane
 	private EmptyView mEmptyView2; // Skeleton example pane
 	private EmptyView mEmptyView3; // Skeleton example pane
 	private EmptyView mEmptyView4; // Skeleton example pane
@@ -33,7 +33,7 @@ public class Main extends Application {
 
 		mAboutView = new AboutView(mAboutModel);
 
-		mEmptyView1 = new EmptyView(stage, mPatientList);
+		mPatientListView = new PatientListView(stage, mPatientList);
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
 		mEmptyView4 = new EmptyView(stage, mPatientList);
@@ -47,7 +47,7 @@ public class Main extends Application {
 
 		Tab tab2 = new Tab();
 		tab2.setText("Load Data");
-		tab2.setContent(mEmptyView1);
+		tab2.setContent(mPatientListView);
 
 		Tab tab3 = new Tab();
 		tab3.setText("Add Data");

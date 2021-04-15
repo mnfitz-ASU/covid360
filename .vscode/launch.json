@@ -12,6 +12,7 @@
 			"type": "java",
 			"name": "Debug (Launch)",
 			"request": "launch",
+			"console": "integratedTerminal",
 			"osx": {
 				// MAC Specific Section
 				"classPaths": [".", "build/classes"],
