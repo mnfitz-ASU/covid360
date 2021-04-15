@@ -1,21 +1,23 @@
 package edu.asu.cse360.covid360;
-import java.util.ArrayList;
-
 // 
 // This class is responsible for the About page
 public class PatientModel
 {
 	// Data Members
 	private int mId = 0;
-	private String mLName = "";
-	private String mFName= "";
-	private String mVaxType= "";
-	private String mVaxDate= "";
-	private String mVaxLoc= "";
+	private String mLastName = "";
+	private String mFirstName = "";
+	private String mVaxType = "";
+	private String mVaxDate = "";
+	private String mVaxLoc = "";
 
 	public PatientModel() 
 	{
 		// This space intentionally empty
+
+		mId = 0;
+		mLastName = "Last Name";
+		mFirstName = "First Name";
 	}
 	
 	// Getters and Setters
@@ -29,52 +31,52 @@ public class PatientModel
 		mId = inId;
 	}
 
-	public String getLName()
+	public String getLastName()
 	{
-		return mLName;
+		return mLastName;
 	}
 	
-	public void setLName(String inLName)
+	public void setLastName(String inLastName)
 	{
-		mLName = inLName;
+		mLastName = inLastName;
 	}
 
-	public String getFName()
+	public String getFirstName()
 	{
-		return mFName;
+		return mFirstName;
 	}
 	
-	public void setFName(String inFName)
+	public void setFirstName(String inFirstName)
 	{
-		mFName = inFName;
+		mFirstName = inFirstName;
 	}
 
-	public String getVType()
+	public String getVaxType()
 	{
 		return mVaxType;
 	}
 	
-	public void setVType(String inVType)
+	public void setVaxType(String inVType)
 	{
 		mVaxType = inVType;
 	}
 
-	public String getVDate()
+	public String getVaxDate()
 	{
 		return mVaxDate;
 	}
 	
-	public void setVDate(String inVDate)
+	public void setVaxDate(String inVDate)
 	{
 		mVaxDate = inVDate;
 	}
 
-	public String getVLoc()
+	public String getVaxLoc()
 	{
 		return mVaxLoc;
 	}
 	
-	public void setVLoc(String inVLoc)
+	public void setVaxLoc(String inVLoc)
 	{
 		mVaxLoc = inVLoc;
 	}
