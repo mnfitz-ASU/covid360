@@ -25,7 +25,7 @@ public class Main extends Application {
 	private PatientListView mPatientListView; // Skeleton example pane
 	private EmptyView mEmptyView2; // Skeleton example pane
 	private EmptyView mEmptyView3; // Skeleton example pane
-	private EmptyView mEmptyView4; // Skeleton example pane
+	private VisualizeView mVisualizeView; // Skeleton example pane
  
 	public void start(Stage stage) 
 	{
@@ -36,7 +36,7 @@ public class Main extends Application {
 		mPatientListView = new PatientListView(stage, mPatientList);
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
-		mEmptyView4 = new EmptyView(stage, mPatientList);
+		mVisualizeView = new VisualizeView(stage, mPatientList);
 
 		tabPane = new TabPane();
 		tabPane.setSide(Side.LEFT);
@@ -59,7 +59,7 @@ public class Main extends Application {
 
 		Tab tab5 = new Tab();
 		tab5.setText("Visualize Data");
-		tab5.setContent(mEmptyView4);
+		tab5.setContent(mVisualizeView);
 
 		tabPane.getSelectionModel().select(0);
 		tabPane.getTabs().addAll(tab1,tab2,tab3,tab4,tab5);
