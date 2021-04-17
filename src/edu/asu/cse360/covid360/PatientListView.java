@@ -3,28 +3,28 @@ package edu.asu.cse360.covid360;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
-import javafx.scene.layout.Region;
+//import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
+//import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 
-import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
+//import javafx.application.Application;
+//import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.scene.Group;
-import javafx.scene.Scene;
+//import javafx.scene.Group;
+//import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
+//import javafx.scene.control.TextField;
+//import javafx.scene.text.Font;
 
 public class PatientListView extends VBox 
 {
 	// constructor
-	public PatientListView(Stage inStage,  ArrayList<PatientModel> inPatient) 
+	public PatientListView(Stage inStage,  ArrayList<PatientModel> ioPatientList) 
 	{
 		mTable = new TableView<PatientModel>();
 		mTable.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
@@ -48,7 +48,7 @@ public class PatientListView extends VBox
 
 		final ObservableList<PatientModel> data =
         FXCollections.observableArrayList(
-            new PatientModel(), new PatientModel());
+            ioPatientList);
 
 		// This is bogus. Property value factory will attempt to call get() or is() method names
 		// if they exist. So in the case of PatientModel, "Id" refers to PatientModel.getId().
