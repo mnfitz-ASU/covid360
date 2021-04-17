@@ -44,7 +44,9 @@ public class Main extends Application {
 
 		mAboutView = new AboutView(mAboutModel);
 
-		mPatientListView = new PatientListView(stage, mPatientList);
+		mPatientListView = new PatientListView(stage);
+		mPatientList = mPatientListView.getPatientList();
+		
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
 		mEmptyView4 = new EmptyView(stage, mPatientList);
