@@ -11,6 +11,17 @@ public class PatientModel
 	private String mVaxDate = "";
 	private String mVaxLoc = "";
 
+	public PatientModel(int inId, String inLastName, String inFirstName, 
+						String inVaxType, String inVaxDate, String invacLoc) 
+	{
+		mId = inId;
+		mLastName = inLastName;
+		mFirstName = inFirstName;
+		mVaxType = inVaxType;
+		mVaxDate = inVaxDate;
+		mVaxLoc = invacLoc;
+	}
+
 	public PatientModel() 
 	{
 		// This space intentionally empty
