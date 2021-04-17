@@ -31,7 +31,7 @@ public class ChartInfo
 
 		if(numVaxType.get(0) == 0)
 		{
-			diffVaxType.add(inPatientList.get(0).getVType());
+			diffVaxType.add(inPatientList.get(0).getVaxType());
 			temp = numVaxType.get(0) + 1;
 			numVaxType.set(0,temp);
 		}
@@ -40,7 +40,7 @@ public class ChartInfo
 		{
 			vaxListLen = diffVaxType.size();
 
-			currVaxType = inPatientList.get(i).getVType();
+			currVaxType = inPatientList.get(i).getVaxType();
 
 			for(int j = 0; j < vaxListLen; j++)
 			{
@@ -63,7 +63,7 @@ public class ChartInfo
 
 		if(numVaxLoc.get(0) == 0)
 		{
-			diffVaxLoc.add(inPatientList.get(0).getVLoc());
+			diffVaxLoc.add(inPatientList.get(0).getVaxLoc());
 			temp = numVaxLoc.get(0) + 1;
 			numVaxLoc.set(0,temp);
 		}
@@ -72,7 +72,7 @@ public class ChartInfo
 		{
 			locListLen = diffVaxLoc.size();
 
-			currVaxLoc = inPatientList.get(i).getVLoc();
+			currVaxLoc = inPatientList.get(i).getVaxLoc();
 
 			for(int j = 0; j < locListLen; j++)
 			{
