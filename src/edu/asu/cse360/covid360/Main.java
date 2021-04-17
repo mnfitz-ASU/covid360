@@ -29,24 +29,13 @@ public class Main extends Application {
  
 	public void start(Stage stage) 
 	{
-		/// Test Code
-		//
-		PatientModel patient1 = new PatientModel(1111,"Doe","John","JJ","4/16/2021","Mayo Clinic");	
-		mPatientList.add(patient1);
-		PatientModel patient2 = new PatientModel(2222,"Bigbreakfast","Matt","Moderna","4/15/2021","Kaiser Permanente");	
-		mPatientList.add(patient2);
-		PatientModel patient3 = new PatientModel(3333,"Steamer","Stanley","Moderna","4/17/2021","Mayo Clinic");	
-		mPatientList.add(patient3);
-		//
-		/// Test Code
-
 		StackPane root = new StackPane();
 
 		mAboutView = new AboutView(mAboutModel);
 
 		mPatientListView = new PatientListView(stage);
 		mPatientList = mPatientListView.getPatientList();
-		
+
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
 		mEmptyView4 = new EmptyView(stage, mPatientList);
