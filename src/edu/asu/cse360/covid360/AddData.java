@@ -17,12 +17,6 @@ public class AddData extends VBox
 	
 	public AddData()
 	{
-		Label date = new Label ("\tDate:\t\t\t\t");
-		TextField DATE = new TextField();
-		HBox hb = new HBox();
-		hb.getChildren().addAll(date,DATE);
-		hb.setSpacing(10);
-
 		Label id = new Label ("\tID:\t\t\t\t\t");
 		TextField ID = new TextField();
 		HBox hb1 = new HBox();
@@ -59,7 +53,7 @@ public class AddData extends VBox
 		hb6.getChildren().addAll(vaccineLocation,VACCINELOCATION);
 		hb5.setSpacing(10);
 		VBox vb=new VBox(8);
-		vb.getChildren().addAll(hb,hb1,hb2,hb3,hb4,hb5,hb6);
+		vb.getChildren().addAll(hb1,hb2,hb3,hb4,hb5,hb6);
 		VBox vb1 = new VBox(8);
 		Button b1=new Button("Enter");
 		vb1.getChildren().add(b1);
@@ -69,9 +63,6 @@ public class AddData extends VBox
 			public void handle(ActionEvent e)
 			{
 				String s="";
-				s=DATE.getText();
-				ob.setVaxDate(s);
-				s=id.getText();
 				int i = Integer.parseInt(s);
 				ob.setId(i);
 				s=LASTNAME.getText();
