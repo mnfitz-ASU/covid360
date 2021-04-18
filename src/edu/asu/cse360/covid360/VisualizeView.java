@@ -31,14 +31,21 @@ public class VisualizeView extends HBox
 	// constructor
 	public VisualizeView(Stage inStage, ArrayList<PatientModel> inPatientList)
 	{
+		errorLabel = new Label();
+		update(inPatientList);
+	} 
+
+	public void update(ArrayList<PatientModel> inPatientList)
+	{
 		//ObservableList<String> aboutList = FXCollections.<String>observableArrayList(/*Displays Input*/);
 		//mGroupListView = new ListView<>(aboutList);
 
-		errorLabel = new Label();
 		// set up the layout
 		//mLabel = new Label();
 		//mLabel.setText("Pie Chart");
 
+		this.getChildren().clear();
+		
 		setPadding(new Insets(10, 10, 10, 10));
 		setSpacing(10); // Horizontal gap in pixels
 
@@ -83,15 +90,13 @@ public class VisualizeView extends HBox
 			barChart.getData().add(dataSeries1);
 
 			this.getChildren().addAll(chart, barChart);
-
 		}
 		else
 		{
 			errorLabel.setText("No Patient Informtion avalible");
 			this.getChildren().addAll(errorLabel);
 		}
-
-	} // end of constructor
+	}
 
 	// --- Data Members ---
 	private Label				errorLabel;
