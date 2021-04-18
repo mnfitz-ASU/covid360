@@ -13,17 +13,8 @@ import javafx.scene.layout.VBox;
 public class AddData extends VBox
 {
 	PatientModel ob =new PatientModel();
-
-	ArrayList<String> info = new ArrayList<String>();
-
 	public AddData()
 	{
-		Label date = new Label ("\tDate:\t\t\t\t");
-		TextField DATE = new TextField();
-		HBox hb = new HBox();
-		hb.getChildren().addAll(date,DATE);
-		hb.setSpacing(10);
-
 		Label id = new Label ("\tID:\t\t\t\t\t");
 		TextField ID = new TextField();
 		HBox hb1 = new HBox();
@@ -60,7 +51,7 @@ public class AddData extends VBox
 		hb6.getChildren().addAll(vaccineLocation,VACCINELOCATION);
 		hb5.setSpacing(10);
 		VBox vb=new VBox(8);
-		vb.getChildren().addAll(hb,hb1,hb2,hb3,hb4,hb5,hb6);
+		vb.getChildren().addAll(hb1,hb2,hb3,hb4,hb5,hb6);
 		VBox vb1 = new VBox(8);
 		Button b1=new Button("Enter");
 		vb1.getChildren().add(b1);
@@ -69,10 +60,8 @@ public class AddData extends VBox
 		{
 			public void handle(ActionEvent e)
 			{
+				l.setText("Data Added");
 				String s="";
-				s=DATE.getText();
-				ob.setVaxDate(s);
-				s=id.getText();
 				int i = Integer.parseInt(s);
 				ob.setId(i);
 				s=LASTNAME.getText();
@@ -85,20 +74,7 @@ public class AddData extends VBox
 				ob.setVaxDate(s);
 				s=VACCINELOCATION.getText();
 				ob.setVaxLoc(s);
-				info.add(s);
-				s=id.getText();
-				info.add(s);
-				s=LASTNAME.getText();
-				info.add(s);
-				s=FIRSTNAME.getText();
-				info.add(s);
-				s=VACCINETYPE.getText();
-				info.add(s);
-				s=VACCINEDATE.getText();
-				info.add(s);
-				s=VACCINELOCATION.getText();
-				info.add(s);
-				l.setText("Data Added");
+				
 
 			}
 		};
@@ -111,10 +87,4 @@ public class AddData extends VBox
 	{
 		return ob;
 	}
-
-	public ArrayList<String> getStringList()
-	{
-		return info;
-	}
-
 }

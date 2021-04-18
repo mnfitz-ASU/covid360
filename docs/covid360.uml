@@ -1,0 +1,28 @@
+@startuml
+
+package model <<Rectangle>> {
+	class PatientModel
+	{
+		int mId
+		String mLastName
+		String mFirstName
+		String mVaxType
+		String mVaxDate
+		String mVaxLoc
+	}
+}
+
+package view <<Rectangle>> {
+  class PatientListView{
+	  ArrayList<PatientModel> getPatientList()
+	  ArrayList<PatientModel> mPatientList
+  }
+}
+
+package controller <<Rectangle>> {
+  class Main {
+	   void start(Stage stage)
+  }
+}
+
+@enduml

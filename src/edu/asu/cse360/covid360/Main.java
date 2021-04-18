@@ -22,6 +22,7 @@ public class Main extends Application
 	// Views
 	private AboutView mAboutView; // Child of mTabPane
 	private PatientListView mPatientListView; // Skeleton example pane
+	private AddData mAddData = new AddData();
 	private EmptyView mEmptyView2; // Skeleton example pane
 	private EmptyView mEmptyView3; // Skeleton example pane
 	private VisualizeView mVisualizeView; // Skeleton example pane
@@ -57,7 +58,7 @@ public class Main extends Application
 
 		Tab tab3 = new Tab();
 		tab3.setText("Add Data");
-		tab3.setContent(mEmptyView2);
+		tab3.setContent(mAddData);
 
 		Tab tab4 = new Tab();
 		tab4.setText("Save Data");
