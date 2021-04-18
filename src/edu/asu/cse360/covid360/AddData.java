@@ -14,8 +14,7 @@ public class AddData extends VBox
 {
 	PatientModel ob =new PatientModel();
 
-	ArrayList<String> info = new ArrayList<String>();
-
+	
 	public AddData()
 	{
 		Label date = new Label ("\tDate:\t\t\t\t");
