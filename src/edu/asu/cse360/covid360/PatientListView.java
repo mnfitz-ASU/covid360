@@ -13,11 +13,14 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
 public class PatientListView extends VBox 
 {
 	// constructor
-	public PatientListView(Stage inStage) 
+	public PatientListView(Stage inStage, ArrayList<PatientModel> inPatientList) 
 	{
+		mPatientList = inPatientList;
+
 		mTable = new TableView<PatientModel>();
 		mTable.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
 		mTable.setMaxWidth(Double.MAX_VALUE);
@@ -74,6 +77,7 @@ public class PatientListView extends VBox
 			mPatientList = loadView.getPatientList();
 			mData = FXCollections.observableArrayList(mPatientList);
 			mTable.setItems(mData);
+			PatientModel.somethingChanged("PatientListView");
 		});
 		//////
 
@@ -86,10 +90,15 @@ public class PatientListView extends VBox
 		return mPatientList;
 	}
 
+	public void setPatientList(ArrayList<PatientModel> inList)
+	{
+		mPatientList = inList;
+	}
+
 	// --- Data Members ---
 	private TableView<PatientModel>			mTable;
 	private ScrollPane 						mScroll;
-	private ArrayList<PatientModel> 		mPatientList = new ArrayList<PatientModel>();
+	private ArrayList<PatientModel> 		mPatientList;
 	private ObservableList<PatientModel> 	mData;
 
 }

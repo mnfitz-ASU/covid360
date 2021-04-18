@@ -1,5 +1,7 @@
 package edu.asu.cse360.covid360;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -11,38 +13,40 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.StackPane;
 
-public class Main extends Application {
-	// an object of TabPane. It will contain createPane and reviewPane under each
-	// tab.
-	private TabPane tabPane; // Container for the tabs
+public class Main extends Application 
+{
+	// Models
+	private AboutModel mAboutModel;
+	private ArrayList<PatientModel> mPatientList;
 
-	private AboutModel mAboutModel= new AboutModel();
-	private ArrayList<PatientModel> mPatientList = new ArrayList<PatientModel>();
-
-	// an object of AboutPane.
-	private AboutView mAboutView; // Child of tabPane
-
+	// Views
+	private AboutView mAboutView; // Child of mTabPane
 	private PatientListView mPatientListView; // Skeleton example pane
 	private AddData mAddData = new AddData();
 	private EmptyView mEmptyView2; // Skeleton example pane
 	private EmptyView mEmptyView3; // Skeleton example pane
 	private VisualizeView mVisualizeView; // Skeleton example pane
+	private TabPane mTabPane; // Container for the tabs
+
  
 	public void start(Stage stage) 
 	{
+		// Initialize the models
+		mAboutModel= new AboutModel();
+		mPatientList = new ArrayList<PatientModel>();
+
+		// Initialize the views
 		StackPane root = new StackPane();
 
 		mAboutView = new AboutView(mAboutModel);
-
-		mPatientListView = new PatientListView(stage);
-		mPatientList = mPatientListView.getPatientList();
+		mPatientListView = new PatientListView(stage, mPatientList);
 
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
 		mVisualizeView = new VisualizeView(stage, mPatientList);
 
-		tabPane = new TabPane();
-		tabPane.setSide(Side.LEFT);
+		mTabPane = new TabPane();
+		mTabPane.setSide(Side.LEFT);
 
 		Tab tab1 = new Tab();
 		tab1.setText("About");
@@ -64,13 +68,50 @@ public class Main extends Application {
 		tab5.setText("Visualize Data");
 		tab5.setContent(mVisualizeView);
 
-		tabPane.getSelectionModel().select(0);
-		tabPane.getTabs().addAll(tab1,tab2,tab3,tab4,tab5);
+		mTabPane.getSelectionModel().select(0);
+		mTabPane.getTabs().addAll(tab1,tab2,tab3,tab4,tab5);
 
-		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+		mTabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 		// Remove closing option
 
-		root.getChildren().add(tabPane);
+		root.getChildren().add(mTabPane);
+
+		// super googled hackery to allow the controller (Main) to 
+		// recieve notification that the model (mPatientList) has changed
+		PatientModel.getSupport().addPropertyChangeListener(new PropertyChangeListener()
+		{
+			public void propertyChange(PropertyChangeEvent inEvent)
+			{
+				if (inEvent.getPropertyName() == "PatientListView")
+				{
+					mPatientList = mPatientListView.getPatientList();
+				}
+				else if (inEvent.getPropertyName() == "AddData")
+				{
+					//mPatientList.add(mAddData.getPatient());
+				}
+				else
+				{
+					//throw new Exception("Unknown Origin for mPatientList (Model) change.");
+				}
+
+				mVisualizeView.update(mPatientList);
+			}
+		});
+		
+		//////// TEST CODE
+		PatientModel testPatient1 = new PatientModel(123, "Ford", "Harrison", 
+		"PharmaCorp", "4/18/2021", "Mayo Clinic");
+		PatientModel testPatient2 = new PatientModel(456, "Solo", "Han", 
+		"MegaVax", "4/19/2021", "Kaiser Permanente");
+		PatientModel testPatient3 = new PatientModel(789, "Jones", "Indiana", 
+		"UberShot", "4/17/2021", "CVS");
+
+		mPatientList.add(testPatient1);
+		mPatientList.add(testPatient2);
+		mPatientList.add(testPatient3);
+		PatientModel.somethingChanged("Main");
+		//////// TEST CODE
 
 		Scene scene = new Scene(root, 900, 400);
 		stage.setTitle("Covid Vaccination Information Application");
