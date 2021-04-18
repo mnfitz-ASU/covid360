@@ -1,30 +1,22 @@
 package edu.asu.cse360.covid360;
 
+
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
-
-import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.scene.Group;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
-
 public class PatientListView extends VBox 
 {
 	// constructor
-	public PatientListView(Stage inStage,  ArrayList<PatientModel> inPatient) 
+	public PatientListView(Stage inStage) 
 	{
 		mTable = new TableView<PatientModel>();
 		mTable.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
@@ -46,10 +38,6 @@ public class PatientListView extends VBox
 		vaxDateCol.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 15% width
 		vaxLocCol.setMaxWidth( 1f * Integer.MAX_VALUE * 15 ); // 15% width
 
-		final ObservableList<PatientModel> data =
-        FXCollections.observableArrayList(
-            new PatientModel(), new PatientModel());
-
 		// This is bogus. Property value factory will attempt to call get() or is() method names
 		// if they exist. So in the case of PatientModel, "Id" refers to PatientModel.getId().
 		idColumn.setCellValueFactory(new PropertyValueFactory<PatientModel, Integer>("Id"));
@@ -61,7 +49,9 @@ public class PatientListView extends VBox
 
 		mTable.getColumns().addAll(idColumn, lastNameCol, firstNameCol, vaxTypeCol, vaxDateCol, vaxLocCol);
 
-		mTable.setItems(data);
+		// Get the patientModel data from mPatientList to display it
+		mData = FXCollections.observableArrayList(mPatientList);
+		mTable.setItems(mData);
 
 		// set up the layout
 
@@ -76,12 +66,30 @@ public class PatientListView extends VBox
 		//Setting content to the scroll pane
 		mScroll.setContent(mTable);
 
-		this.getChildren().addAll(mScroll);
+		//////
+        Button loadFile = new Button("Load File");
+        loadFile.setOnAction(e -> 
+		{
+			LoadView loadView = new LoadView(inStage);
+			mPatientList = loadView.getPatientList();
+			mData = FXCollections.observableArrayList(mPatientList);
+			mTable.setItems(mData);
+		});
+		//////
+
+		this.getChildren().addAll(mScroll,loadFile);
 
 	} // end of constructor
 
+	public ArrayList<PatientModel> getPatientList()
+	{
+		return mPatientList;
+	}
+
 	// --- Data Members ---
-	private TableView<PatientModel>	mTable;
-	private ScrollPane 				mScroll;
+	private TableView<PatientModel>			mTable;
+	private ScrollPane 						mScroll;
+	private ArrayList<PatientModel> 		mPatientList = new ArrayList<PatientModel>();
+	private ObservableList<PatientModel> 	mData;
 
 }

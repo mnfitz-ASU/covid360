@@ -13,6 +13,9 @@ import javafx.scene.layout.VBox;
 public class AddData extends VBox
 {
 	PatientModel ob =new PatientModel();
+
+	ArrayList<String> info = new ArrayList<String>();
+
 	public AddData()
 	{
 		Label date = new Label ("\tDate:\t\t\t\t");
@@ -82,6 +85,19 @@ public class AddData extends VBox
 				ob.setVDate(s);
 				s=VACCINELOCATION.getText();
 				ob.setVLoc(s);
+				info.add(s);
+				s=id.getText();
+				info.add(s);
+				s=LASTNAME.getText();
+				info.add(s);
+				s=FIRSTNAME.getText();
+				info.add(s);
+				s=VACCINETYPE.getText();
+				info.add(s);
+				s=VACCINEDATE.getText();
+				info.add(s);
+				s=VACCINELOCATION.getText();
+				info.add(s);
 				l.setText("Data Added");
 
 			}
@@ -91,8 +107,13 @@ public class AddData extends VBox
 		this.getChildren().addAll(vb,vb1);
 
 	}
+ Shruts0208-patch-5
 	public PatientModel data()
 	{
 		return ob;
+
+	public ArrayList<String> data()
+	{
+		return info;
 	}
 }
