@@ -36,10 +36,10 @@ public class PatientModel
 			mSupport.removePropertyChangeListener(inListener);
 		}
 
-		public void setChanged(String inReason)
+		public void setChanged(String InOrigin)
 		{
 			// Yuck. Value must always be different, otherwise I'll never get a change notification.
-			mSupport.firePropertyChange(inReason, mValue, mValue+1);
+			mSupport.firePropertyChange(InOrigin, mValue, mValue+1);
 			mValue = mValue+1;
 		}
 	}
@@ -133,9 +133,9 @@ public class PatientModel
 		return sSupport;
 	}
 	
-	public static void somethingChanged()
+	public static void somethingChanged(String inOrigin)
 	{
-		getSupport().setChanged("Added");
+		getSupport().setChanged(inOrigin);
 	}
 }
 

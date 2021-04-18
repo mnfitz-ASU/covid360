@@ -77,7 +77,7 @@ public class PatientListView extends VBox
 			mPatientList = loadView.getPatientList();
 			mData = FXCollections.observableArrayList(mPatientList);
 			mTable.setItems(mData);
-			PatientModel.somethingChanged();
+			PatientModel.somethingChanged("PatientListView");
 		});
 		//////
 

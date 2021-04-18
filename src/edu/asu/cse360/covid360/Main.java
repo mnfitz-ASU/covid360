@@ -3,6 +3,7 @@ package edu.asu.cse360.covid360;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.stage.Stage;
@@ -80,12 +81,24 @@ public class Main extends Application
 		{
 			public void propertyChange(PropertyChangeEvent inEvent)
 			{
-				mPatientList = mPatientListView.getPatientList();
-				// ^^^DO THE SAME FOR ADD DATA^^^
+				if (inEvent.getPropertyName() == "PatientListView")
+				{
+					mPatientList = mPatientListView.getPatientList();
+				}
+				else if (inEvent.getPropertyName() == "AddData")
+				{
+					//mPatientList.add(mAddData.getPatient());
+				}
+				else
+				{
+					//throw new Exception("Unknown Origin for mPatientList (Model) change.");
+				}
+
 				mVisualizeView.update(mPatientList);
 			}
 		});
 		
+		//////// TEST CODE
 		PatientModel testPatient1 = new PatientModel(123, "Ford", "Harrison", 
 		"PharmaCorp", "4/18/2021", "Mayo Clinic");
 		PatientModel testPatient2 = new PatientModel(456, "Solo", "Han", 
@@ -96,7 +109,8 @@ public class Main extends Application
 		mPatientList.add(testPatient1);
 		mPatientList.add(testPatient2);
 		mPatientList.add(testPatient3);
-		PatientModel.somethingChanged();
+		PatientModel.somethingChanged("Main");
+		//////// TEST CODE
 
 		Scene scene = new Scene(root, 900, 400);
 		stage.setTitle("Covid Vaccination Information Application");
