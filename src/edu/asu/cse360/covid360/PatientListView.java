@@ -16,8 +16,14 @@ import javafx.scene.control.Label;
 
 public class PatientListView extends VBox 
 {
+	enum Style
+	{
+		LOAD,
+		SAVE
+	};
+	
 	// constructor
-	public PatientListView(Stage inStage, ArrayList<PatientModel> inPatientList) 
+	public PatientListView(Stage inStage, ArrayList<PatientModel> inPatientList, Style inStyle)
 	{
 		mPatientList = inPatientList;
 
@@ -70,18 +76,38 @@ public class PatientListView extends VBox
 		mScroll.setContent(mTable);
 
 		//////
-        Button loadFile = new Button("Load File");
-        loadFile.setOnAction(e -> 
+		Button button = new Button();
+		if (inStyle == Style.LOAD)
 		{
-			LoadView loadView = new LoadView(inStage);
-			mPatientList = loadView.getPatientList();
-			mData = FXCollections.observableArrayList(mPatientList);
-			mTable.setItems(mData);
-			PatientModel.somethingChanged("PatientListView");
-		});
+			button.setText("Load File");
+			button.setOnAction(e -> 
+			{
+				LoadView loadView = new LoadView(inStage);
+				mPatientList = loadView.getPatientList();
+				mData = FXCollections.observableArrayList(mPatientList);
+				mTable.setItems(mData);
+				PatientModel.somethingChanged("PatientListView");
+			});
+		}
+		else if (inStyle == Style.SAVE)
+		{
+			button.setText("Save File");
+			button.setOnAction(e -> 
+			{
+				// Do Save Here
+
+				// LoadView loadView = new LoadView(inStage);
+				// mPatientList = loadView.getPatientList();
+				// mData = FXCollections.observableArrayList(mPatientList);
+				// mTable.setItems(mData);
+				// PatientModel.somethingChanged("PatientListView");
+			});
+		}
+
+
 		//////
 
-		this.getChildren().addAll(mScroll,loadFile);
+		this.getChildren().addAll(mScroll, button);
 
 	} // end of constructor
 
