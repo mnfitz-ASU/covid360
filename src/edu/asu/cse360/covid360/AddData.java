@@ -13,8 +13,6 @@ import javafx.scene.layout.VBox;
 public class AddData extends VBox
 {
 	PatientModel ob =new PatientModel();
-
-	
 	public AddData()
 	{
 		Label id = new Label ("\tID:\t\t\t\t\t");
@@ -62,6 +60,7 @@ public class AddData extends VBox
 		{
 			public void handle(ActionEvent e)
 			{
+				l.setText("Data Added");
 				String s="";
 				int i = Integer.parseInt(s);
 				ob.setId(i);
@@ -75,20 +74,7 @@ public class AddData extends VBox
 				ob.setVaxDate(s);
 				s=VACCINELOCATION.getText();
 				ob.setVaxLoc(s);
-				info.add(s);
-				s=id.getText();
-				info.add(s);
-				s=LASTNAME.getText();
-				info.add(s);
-				s=FIRSTNAME.getText();
-				info.add(s);
-				s=VACCINETYPE.getText();
-				info.add(s);
-				s=VACCINEDATE.getText();
-				info.add(s);
-				s=VACCINELOCATION.getText();
-				info.add(s);
-				l.setText("Data Added");
+				
 
 			}
 		};
@@ -101,10 +87,4 @@ public class AddData extends VBox
 	{
 		return ob;
 	}
-
-	public ArrayList<String> getStringList()
-	{
-		return info;
-	}
-
 }
