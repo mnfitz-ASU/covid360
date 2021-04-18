@@ -39,7 +39,7 @@ public class Main extends Application
 		StackPane root = new StackPane();
 
 		mAboutView = new AboutView(mAboutModel);
-		mPatientListView = new PatientListView(stage, mPatientList);
+		mPatientListView = new PatientListView(stage, mPatientList, PatientListView.Style.LOAD);
 
 		mEmptyView2 = new EmptyView(stage, mPatientList);
 		mEmptyView3 = new EmptyView(stage, mPatientList);
