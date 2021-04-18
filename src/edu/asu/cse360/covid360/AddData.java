@@ -71,20 +71,20 @@ public class AddData extends VBox
 			{
 				String s="";
 				s=DATE.getText();
-				ob.setVDate(s);
+				ob.setVaxDate(s);
 				s=id.getText();
 				int i = Integer.parseInt(s);
 				ob.setId(i);
 				s=LASTNAME.getText();
-				ob.setLName(s);
+				ob.setLastName(s);
 				s=FIRSTNAME.getText();
-				ob.setFName(s);
+				ob.setFirstName(s);
 				s=VACCINETYPE.getText();
-				ob.setVType(s);
+				ob.setVaxType(s);
 				s=VACCINEDATE.getText();
-				ob.setVDate(s);
+				ob.setVaxDate(s);
 				s=VACCINELOCATION.getText();
-				ob.setVLoc(s);
+				ob.setVaxLoc(s);
 				info.add(s);
 				s=id.getText();
 				info.add(s);
@@ -105,15 +105,16 @@ public class AddData extends VBox
 		b1.setOnAction(event);
 		vb1.getChildren().add(l);
 		this.getChildren().addAll(vb,vb1);
-
 	}
- Shruts0208-patch-5
-	public PatientModel data()
+
+	public PatientModel getPatient()
 	{
 		return ob;
+	}
 
-	public ArrayList<String> data()
+	public ArrayList<String> getStringList()
 	{
 		return info;
 	}
+
 }
