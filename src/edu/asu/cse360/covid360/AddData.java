@@ -14,8 +14,6 @@ public class AddData extends VBox
 {
 	PatientModel ob =new PatientModel();
 
-	ArrayList<String> info = new ArrayList<String>();
-
 	public AddData()
 	{
 		Label date = new Label ("\tDate:\t\t\t\t");
@@ -69,6 +67,7 @@ public class AddData extends VBox
 		{
 			public void handle(ActionEvent e)
 			{
+				l.setText("Data Added");
 				String s="";
 				s=DATE.getText();
 				ob.setVaxDate(s);
@@ -85,20 +84,7 @@ public class AddData extends VBox
 				ob.setVaxDate(s);
 				s=VACCINELOCATION.getText();
 				ob.setVaxLoc(s);
-				info.add(s);
-				s=id.getText();
-				info.add(s);
-				s=LASTNAME.getText();
-				info.add(s);
-				s=FIRSTNAME.getText();
-				info.add(s);
-				s=VACCINETYPE.getText();
-				info.add(s);
-				s=VACCINEDATE.getText();
-				info.add(s);
-				s=VACCINELOCATION.getText();
-				info.add(s);
-				l.setText("Data Added");
+				
 
 			}
 		};
@@ -111,10 +97,4 @@ public class AddData extends VBox
 	{
 		return ob;
 	}
-
-	public ArrayList<String> getStringList()
-	{
-		return info;
-	}
-
 }
