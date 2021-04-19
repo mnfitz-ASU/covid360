@@ -76,10 +76,12 @@ public class Main extends Application
 
 		root.getChildren().add(mTabPane);
 
-		// super googled hackery to allow the controller (Main) to 
-		// recieve notification that the model (mPatientList) has changed
+		// Notifier = PatientModel.getSupport()
+		// Notifier.addPropertyChangeListener(new Listener)
 		PatientModel.getSupport().addPropertyChangeListener(new PropertyChangeListener()
 		{
+			// super googled hackery to allow the controller (Main) to 
+			// recieve notification that the model (mPatientList) has changed
 			public void propertyChange(PropertyChangeEvent inEvent)
 			{
 				if (inEvent.getPropertyName() == "PatientListView")
