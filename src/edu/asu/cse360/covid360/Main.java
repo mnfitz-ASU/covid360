@@ -88,7 +88,7 @@ public class Main extends Application
 				}
 				else if (inEvent.getPropertyName() == "AddData")
 				{
-					//mPatientList.add(mAddData.getPatient());
+					mPatientList.add(mAddData.getPatient());
 				}
 				else
 				{
@@ -96,23 +96,10 @@ public class Main extends Application
 				}
 
 				mVisualizeView.update(mPatientList);
+				mPatientListView.update(mPatientList);
 			}
 		});
 		
-		//////// TEST CODE
-		PatientModel testPatient1 = new PatientModel(123, "Ford", "Harrison", 
-		"PharmaCorp", "4/18/2021", "Mayo Clinic");
-		PatientModel testPatient2 = new PatientModel(456, "Solo", "Han", 
-		"MegaVax", "4/19/2021", "Kaiser Permanente");
-		PatientModel testPatient3 = new PatientModel(789, "Jones", "Indiana", 
-		"UberShot", "4/17/2021", "CVS");
-
-		mPatientList.add(testPatient1);
-		mPatientList.add(testPatient2);
-		mPatientList.add(testPatient3);
-		PatientModel.somethingChanged("Main");
-		//////// TEST CODE
-
 		Scene scene = new Scene(root, 900, 400);
 		stage.setTitle("Covid Vaccination Information Application");
 		stage.setScene(scene);

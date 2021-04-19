@@ -7,84 +7,100 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.geometry.Insets; 
+import javafx.geometry.Pos; 
+import javafx.scene.layout.GridPane; 
 
 public class AddData extends VBox
 {
-	PatientModel ob =new PatientModel();
+	TextField mId = new TextField();
+	TextField mLastName = new TextField();
+	TextField mFirstName = new TextField();
+	TextField mVaccineType = new TextField();
+	TextField mVaccineDate = new TextField();
+	TextField mVaccineLocation = new TextField();
+
+	PatientModel mNewPatient =new PatientModel();
+
 	public AddData()
 	{
+		GridPane gridPane = new GridPane();    
+
+		//Setting size for the pane  
+		gridPane.setMinSize(400, 200); 
+
+		//Setting the padding  
+		gridPane.setPadding(new Insets(10, 10, 10, 10)); 
+
+		//Setting the vertical and horizontal gaps between the columns 
+		gridPane.setVgap(10); 
+		gridPane.setHgap(10);       
+
+		//Setting the Grid alignment 
+		gridPane.setAlignment(Pos.CENTER_LEFT); 
+
 		Label id = new Label ("\tID:\t\t\t\t\t");
-		TextField ID = new TextField();
-		HBox hb1 = new HBox();
-		hb1.getChildren().addAll(id,ID);
-		hb1.setSpacing(10);
-
 		Label lastName = new Label ("\tLast Name:\t\t\t");
-		TextField LASTNAME = new TextField();
-		HBox hb2 = new HBox();
-		hb2.getChildren().addAll(lastName,LASTNAME);
-		hb2.setSpacing(10);
-
 		Label firstName = new Label ("\tFirst Name:\t\t\t");
-		TextField FIRSTNAME = new TextField();
-		HBox hb3 = new HBox();
-		hb3.getChildren().addAll(firstName,FIRSTNAME);
-		hb3.setSpacing(10);
-
 		Label vaccineType = new Label ("\tVaccine Type:\t\t");
-		TextField VACCINETYPE = new TextField();
-		HBox hb4 = new HBox();
-		hb4.getChildren().addAll(vaccineType,VACCINETYPE);
-		hb4.setSpacing(10);
-
 		Label vaccineDate = new Label ("\tVaccination Date:\t");
-		TextField VACCINEDATE = new TextField();
-		HBox hb5 = new HBox();
-		hb5.getChildren().addAll(vaccineDate,VACCINEDATE);
-		hb5.setSpacing(10);
-
 		Label vaccineLocation = new Label ("\tVaccination Location:\t");
-		TextField VACCINELOCATION = new TextField();
-		HBox hb6 = new HBox();
-		hb6.getChildren().addAll(vaccineLocation,VACCINELOCATION);
-		hb5.setSpacing(10);
-		VBox vb=new VBox(8);
-		vb.getChildren().addAll(hb1,hb2,hb3,hb4,hb5,hb6);
-		VBox vb1 = new VBox(8);
+
 		Button b1=new Button("Enter");
-		vb1.getChildren().add(b1);
-		Label l =new Label();
+		Label successLabel = new Label("");
+		
+		//Arranging all the nodes in the grid 
+		gridPane.add(id, 0, 0);
+		gridPane.add(mId, 1, 0);
+
+		gridPane.add(lastName, 0, 1);
+		gridPane.add(mLastName, 1, 1);
+
+		gridPane.add(firstName, 0, 2);
+		gridPane.add(mFirstName, 1, 2);
+
+		gridPane.add(vaccineType, 0, 3);
+		gridPane.add(mVaccineType, 1, 3);
+
+		gridPane.add(vaccineDate, 0, 4);
+		gridPane.add(mVaccineDate, 1, 4);
+
+		gridPane.add(vaccineLocation, 0, 5);
+		gridPane.add(mVaccineLocation, 1, 5);
+
+		gridPane.add(b1, 0, 6);
+		gridPane.add(successLabel, 0, 7);
+
 		EventHandler<ActionEvent> event = new EventHandler<ActionEvent>()
 		{
 			public void handle(ActionEvent e)
 			{
-				l.setText("Data Added");
-				String s="";
-				int i = Integer.parseInt(s);
-				ob.setId(i);
-				s=LASTNAME.getText();
-				ob.setLastName(s);
-				s=FIRSTNAME.getText();
-				ob.setFirstName(s);
-				s=VACCINETYPE.getText();
-				ob.setVaxType(s);
-				s=VACCINEDATE.getText();
-				ob.setVaxDate(s);
-				s=VACCINELOCATION.getText();
-				ob.setVaxLoc(s);
-				
+				successLabel.setText("Data Added");
+				mNewPatient.setId(Integer.parseInt(mId.getText()));
+				mNewPatient.setLastName(mLastName.getText());
+				mNewPatient.setFirstName(mFirstName.getText());
+				mNewPatient.setVaxType(mVaccineType.getText());
+				mNewPatient.setVaxDate(mVaccineDate.getText());
+				mNewPatient.setVaxLoc(mVaccineLocation.getText());
 
+				PatientModel.somethingChanged("AddData");
+
+				mId.setText("");
+				mLastName.setText("");
+				mFirstName.setText("");
+				mVaccineType.setText("");
+				mVaccineDate.setText("");
+				mVaccineLocation.setText("");
 			}
 		};
+
 		b1.setOnAction(event);
-		vb1.getChildren().add(l);
-		this.getChildren().addAll(vb,vb1);
+		this.getChildren().addAll(gridPane);
 	}
 
 	public PatientModel getPatient()
 	{
-		return ob;
+		return mNewPatient;
 	}
 }
