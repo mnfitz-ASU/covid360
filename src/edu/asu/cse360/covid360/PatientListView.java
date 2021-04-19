@@ -19,13 +19,15 @@ public class PatientListView extends VBox
 	enum Style
 	{
 		LOAD,
-		SAVE
+		SAVE,
+		NONE
 	};
 	
 	// constructor
 	public PatientListView(Stage inStage, ArrayList<PatientModel> inPatientList, Style inStyle)
 	{
-		mPatientList = inPatientList;
+		mStage = inStage;
+		mStyle = inStyle;
 
 		mTable = new TableView<PatientModel>();
 		mTable.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
@@ -58,55 +60,58 @@ public class PatientListView extends VBox
 
 		mTable.getColumns().addAll(idColumn, lastNameCol, firstNameCol, vaxTypeCol, vaxDateCol, vaxLocCol);
 
-		// Get the patientModel data from mPatientList to display it
-		mData = FXCollections.observableArrayList(mPatientList);
-		mTable.setItems(mData);
-
 		// set up the layout
 
-		setPadding(new Insets(10, 10, 10, 100));
+		setPadding(new Insets(10, 10, 10, 10));
 		setSpacing(10); // Horizontal gap in pixels
 
 		mScroll = new ScrollPane();
 
 		mScroll.fitToWidthProperty().set(true);
 		mScroll.fitToHeightProperty().set(true);
+		
+		update(inPatientList);
+	}
+
+	public void update(ArrayList<PatientModel> inPatientList)
+	{
+		mPatientList = inPatientList;
+		
+		// Get the patientModel data from mPatientList to display it
+		mData = FXCollections.observableArrayList(mPatientList);
+		mTable.setItems(mData);
 
 		//Setting content to the scroll pane
 		mScroll.setContent(mTable);
 
-		//////
 		Button button = new Button();
-		if (inStyle == Style.LOAD)
+		if (mStyle == Style.LOAD)
 		{
 			button.setText("Load File");
 			button.setOnAction(e -> 
 			{
-				LoadView loadView = new LoadView(inStage);
+				LoadView loadView = new LoadView(mStage);
 				mPatientList = loadView.getPatientList();
 				mData = FXCollections.observableArrayList(mPatientList);
 				mTable.setItems(mData);
 				PatientModel.somethingChanged("PatientListView");
 			});
 		}
-		else if (inStyle == Style.SAVE)
+		else if (mStyle == Style.SAVE)
 		{
 			button.setText("Save File");
 			button.setOnAction(e -> 
 			{
 				// Do Save Here
 
-				// LoadView loadView = new LoadView(inStage);
+				// LoadView loadView = new LoadView(mStage);
 				// mPatientList = loadView.getPatientList();
 				// mData = FXCollections.observableArrayList(mPatientList);
 				// mTable.setItems(mData);
 				// PatientModel.somethingChanged("PatientListView");
 			});
 		}
-
-
-		//////
-
+		this.getChildren().clear();
 		this.getChildren().addAll(mScroll, button);
 
 	} // end of constructor
@@ -126,5 +131,7 @@ public class PatientListView extends VBox
 	private ScrollPane 						mScroll;
 	private ArrayList<PatientModel> 		mPatientList;
 	private ObservableList<PatientModel> 	mData;
+	private Style 							mStyle;
+	private Stage 							mStage;
 
 }
