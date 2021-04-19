@@ -23,6 +23,10 @@ public class PatientModel
 		public Support() 
 		{
 			mValue = 0;
+			
+			// Yucky. I had to make this nested class because I couldn't figure out how
+			// to use a raw, PropertyChangeSupport object because the ctor expects
+			// a "this" argument.
 			mSupport = new PropertyChangeSupport(this);
 		}
 
@@ -44,6 +48,11 @@ public class PatientModel
 		}
 	}
 
+	// Static notifier 
+	// I wanted to notify Main when Main.mPatientList has changed, I couldn't 
+	// figure out how to do it. So instead, I used this static PropertyChangeSupport() 
+	// as a notifier to say something, somewhere in the app has changed. 
+	// Yucky, but I ran out of time.
 	private static Support sSupport = new Support();
 
 	public PatientModel(int inId, String inLastName, String inFirstName, 

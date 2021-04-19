@@ -1,6 +1,5 @@
 //package application;
 package edu.asu.cse360.covid360;
-import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
