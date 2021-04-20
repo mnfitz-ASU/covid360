@@ -1,17 +1,21 @@
 # Covid360 Team Project
 
-Description:
+## Description:
 - Java GUI application that gets and shows data about Covid-19 vaccinations. Load Data asks user for .csv file, reads it, loads data into a data structure, and displays the data in a table in application. 
 
 Class: CSE 360, M 3:00 - 4:15
 
-Names/Numbers: 
--Matthew Fitzgerald #1216579507
--
--
--
+Group: #3
 
-Development Setup:
+Members: Matthew Fitzgerald, Ian Bellerose, Samriddhi Agnihotri, Shruti Sunil Ugalmugale
+
+Github Repository:https://github.com/mnfitz-ASU/covid360
+
+Report Document: https://docs.google.com/document/d/1UcA1xWQXpqISfe8BGhIGONEc8UzJxzZC4nK27S5NdR0/edit
+
+Dedicated Group Discord: https://discord.gg/AeTTHF6h
+
+## Development Setup:
 -Following Components Required
 
 1) Install JDK 16

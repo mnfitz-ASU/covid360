@@ -82,6 +82,7 @@ public class Main extends Application
 		{
 			// super googled hackery to allow the controller (Main) to 
 			// recieve notification that the model (mPatientList) has changed
+			// Stole it from here: https://www.baeldung.com/java-observer-pattern
 			public void propertyChange(PropertyChangeEvent inEvent)
 			{
 				if (inEvent.getPropertyName() == "PatientListView")
