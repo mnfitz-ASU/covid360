@@ -33,12 +33,12 @@ public class SaveInfo {
 	 patListLen = inPatientList.size();
 	for(int i = 1; i < patListLen; i++)
 	{
-	    ID.add(inPatientList.get(1).getId()) ;
-	    LastName.add(inPatientList.get(1).getLastName());
-	    FirstName.add(inPatientList.get(1).getFirstName());
-	    Vaccine.add(inPatientList.get(1).getVaxType());
-	    Date.add(inPatientList.get(1).getVaxDate());
-	    VaccineLocation.add(inPatientList.get(1).getVaxLoc());
+	    ID.add(inPatientList.get(i).getId()) ;
+	    LastName.add(inPatientList.get(i).getLastName());
+	    FirstName.add(inPatientList.get(i).getFirstName());
+	    Vaccine.add(inPatientList.get(i).getVaxType());
+	    Date.add(inPatientList.get(i).getVaxDate());
+	    VaccineLocation.add(inPatientList.get(i).getVaxLoc());
 	    
 	    
 	}
