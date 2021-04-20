@@ -11,7 +11,7 @@ Members: Matthew Fitzgerald, Ian Bellerose, Samriddhi Agnihotri, Shruti Sunil Ug
 
 Github Repository:https://github.com/mnfitz-ASU/covid360
 
-Report Document: https://docs.google.com/document/d/1UcA1xWQXpqISfe8BGhIGONEc8UzJxzZC4nK27S5NdR0/edit
+Report Document:https://docs.google.com/document/d/1UcA1xWQXpqISfe8BGhIGONEc8UzJxzZC4nK27S5NdR0/edit?usp=sharing
 
 Dedicated Group Discord: https://discord.gg/AeTTHF6h
 
