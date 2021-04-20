@@ -102,13 +102,8 @@ public class PatientListView extends VBox
 			button.setText("Save File");
 			button.setOnAction(e -> 
 			{
-				// Do Save Here
-
-				// LoadView loadView = new LoadView(mStage);
-				// mPatientList = loadView.getPatientList();
-				// mData = FXCollections.observableArrayList(mPatientList);
-				// mTable.setItems(mData);
-				// PatientModel.somethingChanged("PatientListView");
+				SaveData saveData = new SaveData(mStage, mPatientList);
+				// This is weird. Maybe SaveData should've been a static method
 			});
 		}
 		this.getChildren().clear();

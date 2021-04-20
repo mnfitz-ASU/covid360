@@ -21,11 +21,10 @@ public class Main extends Application
 
 	// Views
 	private AboutView mAboutView; // Child of mTabPane
-	private PatientListView mPatientListView; // Skeleton example pane
+	private PatientListView mLoadListView; 
+	private PatientListView mSaveListView;
 	private AddData mAddData = new AddData();
-	private EmptyView mEmptyView2; // Skeleton example pane
-	private EmptyView mEmptyView3; // Skeleton example pane
-	private VisualizeView mVisualizeView; // Skeleton example pane
+	private VisualizeView mVisualizeView; 
 	private TabPane mTabPane; // Container for the tabs
 
  
@@ -39,10 +38,9 @@ public class Main extends Application
 		StackPane root = new StackPane();
 
 		mAboutView = new AboutView(mAboutModel);
-		mPatientListView = new PatientListView(stage, mPatientList, PatientListView.Style.LOAD);
+		mLoadListView = new PatientListView(stage, mPatientList, PatientListView.Style.LOAD);
+		mSaveListView = new PatientListView(stage, mPatientList, PatientListView.Style.SAVE);
 
-		mEmptyView2 = new EmptyView(stage, mPatientList);
-		mEmptyView3 = new EmptyView(stage, mPatientList);
 		mVisualizeView = new VisualizeView(stage, mPatientList);
 
 		mTabPane = new TabPane();
@@ -54,7 +52,7 @@ public class Main extends Application
 
 		Tab tab2 = new Tab();
 		tab2.setText("Load Data");
-		tab2.setContent(mPatientListView);
+		tab2.setContent(mLoadListView);
 
 		Tab tab3 = new Tab();
 		tab3.setText("Add Data");
@@ -62,7 +60,7 @@ public class Main extends Application
 
 		Tab tab4 = new Tab();
 		tab4.setText("Save Data");
-		tab4.setContent(mEmptyView3);
+		tab4.setContent(mSaveListView);
 
 		Tab tab5 = new Tab();
 		tab5.setText("Visualize Data");
@@ -87,7 +85,7 @@ public class Main extends Application
 			{
 				if (inEvent.getPropertyName() == "PatientListView")
 				{
-					mPatientList = mPatientListView.getPatientList();
+					mPatientList = mLoadListView.getPatientList();
 				}
 				else if (inEvent.getPropertyName() == "AddData")
 				{
@@ -99,7 +97,8 @@ public class Main extends Application
 				}
 
 				mVisualizeView.update(mPatientList);
-				mPatientListView.update(mPatientList);
+				mLoadListView.update(mPatientList);
+				mSaveListView.update(mPatientList);
 			}
 		});
 		
