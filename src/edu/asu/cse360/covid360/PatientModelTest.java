@@ -1,7 +1,5 @@
 package edu.asu.cse360.covid360;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;  
 import java.beans.*;
 public class PatientModelTest

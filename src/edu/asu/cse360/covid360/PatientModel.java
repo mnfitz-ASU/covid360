@@ -2,8 +2,6 @@ package edu.asu.cse360.covid360;
 
 import java.beans.*;
 
-// 
-// This class is responsible for the About page
 public class PatientModel
 {
 	// Data Members
@@ -27,6 +25,7 @@ public class PatientModel
 			// Yucky. I had to make this nested class because I couldn't figure out how
 			// to use a raw, PropertyChangeSupport object because the ctor expects
 			// a "this" argument.
+			// Stole it from here: https://www.baeldung.com/java-observer-pattern
 			mSupport = new PropertyChangeSupport(this);
 		}
 

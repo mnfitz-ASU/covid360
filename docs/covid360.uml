@@ -3,25 +3,29 @@
 package model <<Rectangle>> {
 	class PatientModel
 	{
-		int mId
-		String mLastName
-		String mFirstName
-		String mVaxType
-		String mVaxDate
-		String mVaxLoc
+		+ static void somethingChanged(String inOrigin)
+		- static PropertyChangeSupport mSupport
+		- int mId
+		- String mLastName
+		- String mFirstName
+		- String mVaxType
+		- String mVaxDate
+		- String mVaxLoc
 	}
 }
 
 package view <<Rectangle>> {
-  class PatientListView{
-	  ArrayList<PatientModel> getPatientList()
-	  ArrayList<PatientModel> mPatientList
+  class PatientListView {
+	  + void getPatientList(ArrayList<PatientModel> mPatientList)
+	  + ArrayList<PatientModel> getPatientList()
+	  - ArrayList<PatientModel> mPatientList
   }
 }
 
 package controller <<Rectangle>> {
   class Main {
-	   void start(Stage stage)
+	   + void start(Stage stage)
+	   - PropertyChangeListener
   }
 }
 
