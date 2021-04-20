@@ -30,3 +30,145 @@ package controller <<Rectangle>> {
 }
 
 @enduml
+
+
+@startuml
+class Main
+
+class SaveData{
+  -COMMA_DELIMITER:string
+  -NEW_LINE_SEPERATOR: String
+  -FILE_HEADER: String
+  -fileWriter: FileWriter
+  +writeCSV(String,SaveInfo): void
+}
+
+class SaveInfo{
+  -iD: ArrrayList<Integer>
+  -lastName: ArrrayList<String> 
+  -firstName: ArrrayList<String>
+  -vaccine: ArrrayList<String>
+  -date: ArrrayList<String>
+  -vaccineLocation: ArrrayList<String>
+  -patListLen: int
+  -flag: String
+  -flag1: Boolean
+  -inPatientList: ArrrayList<PatientModel>
+  +updateSave(): void
+  +getID(): ArrayList<Integer>
+  +getFirstName(): ArrayList<String>
+  +vaccine():  ArrayList<String>
+  +getLastName(): ArrayList<String>
+  +getVaccineLocation():  ArrayList<String>
+  +getDate():  ArrayList<String>
+  +goal(): Boolean
+  +listSize(): int
+  +message(): String
+}
+
+class AboutModel{
+  -mGroupListView: ListView<String>
+  -mLabel: Label
+}
+
+class AboutView{
+  -mGroupListView: ListView<String>
+  -mLabel: Label
+}
+
+class AddData{
+  -mId:TextField
+  -mLastName:TextField
+  -mFirstName:TextField
+  -mVaccineType:TextField
+  -mVaccineDate:TextField
+  -mVaccineLocation:TextField
+  +getPatientModel(): PatientModel
+}
+
+class ChartInfo{
+  -diffVaxType: ArrayList<String>
+  -numVaxType: ArrayList<Integer>
+  -diffVaxLoc: ArrayList<String>
+  -numVaxLoc: ArrayList<Integer>
+  +updateChartInfo(): void
+  +getVaxTypes(): ArrayList<String>
+  +getVaxNum(): ArrayList<Integer>
+  +getVaxLocs(): ArrayList<String>
+  +getLocNum(): ArrayList<Integer>
+}
+
+class LoadView{
+  -mFileChooser: FileChooser
+  -mLoadList: ArrayList<PatientModel>
+  +parceCSV(inFile):void
+  +getPatientList(): ArrayList<PatientModel>
+}
+
+class PatientListView{
+  -mTable: TableView<PatientModel>
+  -mScroll: ScrollPane
+  -mPatientList: ArrayList<PatientModel>
+  -mData: ObservableList<PatientModel>
+  -mStyle: Style
+  -mStage: Stage
+  +update(ArrayList<PatientModel>: void
+  +getPatientList(): ArrayList<PatientModel>
+  +setPatientList(ArrayList<PatientModel>): void
+}
+
+class PatientModel{
+  -mId: int
+  -mLastName: String
+  -mFirstName: String
+  -mVaxType: String
+  -mVaxDate: String
+  -mVaxLoc: String
+  +getId(): int
+  +setId(int): void
+  +getLastName(): String
+  +setLastName(String): void
+  + getFirstName(): String
+  +setFirstName(String): void
+  +getVaxType(): String
+  +setVaxType(String): void
+  +getVaxDate(): String
+  +setVaxDate(String): void
+  +getVaxLoc(): String
+  +setVaxLoc(String): void
+  +getSupport(): Support
+  +somethingChanged(String): void
+}
+
+class Support{
+  -mValue: int
+  -mSupport PropertyChangeSupport
+  +addPropertyChangeListener(PropertyChangeListener): void
+  +removePropertyChangeListener(PropertyChangeListener): void
+  +setChanged(String): void
+}
+
+class VisualizeView{
+  -diffVaxType: ArrayList<String>
+  -numVaxType: ArrayList<Integer>
+  -diffVaxLoc: ArrayList<String>
+  -numVaxLoc: ArrayList<Integer>
+  -errorLabel: Label
+  +update(ArrayList<PatientModel): void
+}
+
+Main -- AboutView
+Main -- LoadView
+Main -right- PatientListView
+Main -up- VisualizeView
+Main -- AddData
+Main -left- SaveData
+
+VisualizeView *-right- ChartInfo
+AboutView *-- AboutModel
+LoadView o-- PatientModel
+AddData o-- PatientModel
+SaveData *-- SaveInfo
+
+PatientModel *-- Support
+@enduml
