@@ -3,7 +3,7 @@
 <p align="center">
     <!--
     <a href="https://github.com/mnfitz-ASU/cse340redux/pulse" alt="Activity">
-        <img src="https://img.shields.io/github/commit-activity/mnfitz-ASU/cse340redux" /></a>
+        <img src="https://img.shields.io/github/commit-activity/mnfitz-ASU/covid360" /></a>
     <a href="https://discord.gg/sKXHzHpq">
         <img src="https://img.shields.io/discord/308323056592486420?logo=discord"
             alt="chat on Discord"></a>
@@ -21,21 +21,27 @@
 - Java GUI application that gets and shows data about Covid-19 vaccinations. Load Data asks user for .csv file, reads it, loads data into a data structure, and displays the data in a table in application. 
 - Idea: Create a complex Java program with a team while following a chosen software development Process Model (Waterfall Method).
 
-This project required that the team should create a Java application with multiple tabviews to add and display data. It also required that data could be read from a file and that the data be displayed visially in a graph. This project was just as much an assessment of Java proficiency as it was a test of understanding agile development, since another requirement was that the group choose and follow a software development Process Model; doccumenting development cycle progress along the way. The group's goal was to create a memorable project which fulfills all requirements while chosing to follow the agile "Waterfall Method" development cycle. To accomplish these goals, the group decided to make the porject data focus on covid-19 vaccinations and created a discord server and a github repository, wrote user stories, then collaboratively coded the application; doccumenting progress periodically.
+This project required that the team should create a Java application with multiple tabviews to add and display data. It also required that data could be read from a file and that the data be displayed visually in a graph. This project was just as much an assessment of Java proficiency as it was a test of understanding agile development, since another requirement was that the group choose and follow a software development Process Model; documenting development cycle progress along the way. The group's goal was to create a memorable project which fulfills all requirements while choosing to follow the agile "Waterfall Method" development cycle. To accomplish these goals, the group created a discord server and a GitHub repository, wrote user stories, then collaboratively coded the application; documenting progress periodically.
 
 <br/>
 **Note**: This code is entirely in Java using JDK 16, as required by the rubric. 
 
-## Example Screen
-
+## Example
+<p align="center">
+<img width="931" alt="Application in Action" src="https://user-images.githubusercontent.com/79553911/209870473-41db24ac-9637-4811-83b5-83e3a7e23e91.gif">
+</p>
 
 ## Group Information:
 Class: CSE 360, M 3:00 - 4:15
+<br/>
 Group: #3
+<br/>
 Members: Matthew Fitzgerald, Ian Bellerose, Samriddhi Agnihotri, Shruti Sunil Ugalmugale
+<br/>
 Github Repository: https://github.com/mnfitz-ASU/covid360
+<br/>
 Report Document: https://docs.google.com/document/d/1UcA1xWQXpqISfe8BGhIGONEc8UzJxzZC4nK27S5NdR0/edit?usp=sharing
-
+<br/>
 
 ## Prerequisites
 -Following Components Required
